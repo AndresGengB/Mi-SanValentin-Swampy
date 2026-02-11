@@ -3,335 +3,486 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>¡Feliz Cumpleaños, Abuelita Elba!</title>
+    <title>¿Quieres ser mi San Valentín?</title>
     <style>
         * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-body {
-    font-family: 'Arial', sans-serif;
-    background: linear-gradient(135deg, #e0f7fa, #ffe0b2);
-    color: #333;
-    text-align: center;
-    overflow: hidden;
-    animation: backgroundAnimation 10s infinite alternate;
-}
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #ff6b6b, #ff8e8e, #ffb1b1);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow-x: hidden;
+            position: relative;
+        }
 
-@keyframes backgroundAnimation {
-    0% { background: #e0f7fa; }
-    100% { background: #ffe0b2; }
-}
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 10% 20%, rgba(255,255,255,0.1) 0%, transparent 20%),
+                radial-gradient(circle at 90% 80%, rgba(255,255,255,0.1) 0%, transparent 20%);
+            z-index: 0;
+        }
 
-header {
-    background-color: #ffcc00;
-    padding: 20px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-    position: relative;
-}
+        .container {
+            position: relative;
+            z-index: 1;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 25px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            max-width: 600px;
+            width: 90%;
+            text-align: center;
+            animation: fadeIn 1s ease-in-out;
+        }
 
-h1 {
-    font-size: 2.5em;
-    color: #5a5a5a;
-}
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
 
-.header-decoration {
-    width: 100%;
-    height: 10px;
-    background: linear-gradient(to right, #ff6699, #ffcc00);
-    position: absolute;
-    bottom: 0;
-}
+        .hearts {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
 
-main {
-    padding: 20px;
-}
+        .heart {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: #ff6b6b;
+            border-radius: 50% 50% 50% 0;
+            transform: rotate(-45deg);
+            animation: float 3s ease-in-out infinite;
+        }
 
-.message {
-    margin-bottom: 20px;
-}
+        .heart::before,
+        .heart::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: #ff6b6b;
+            border-radius: 50%;
+        }
 
-.card {
-    background-color: white;
-    border-radius: 10px;
-    padding: 20px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-    animation: slideIn 1s ease-out;
-}
+        .heart::before {
+            top: -50%;
+            left: 0;
+        }
 
-.card h2 {
-    color: #ff6f61;
-}
+        .heart::after {
+            top: 0;
+            left: -50%;
+        }
 
-.card p {
-    font-size: 1.2em;
-    line-height: 1.5;
-    color: #555;
-}
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0) rotate(-45deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+        }
 
-.cake {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 20px 0;
-}
+        h1 {
+            font-size: 2.5rem;
+            color: #ff6b6b;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+            animation: pulse 2s infinite;
+        }
 
-.cake-container {
-    position: relative;
-    width: 250px;
-    height: 250px;
-}
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+        }
 
-.cake-layer {
-    width: 100%;
-    border-radius: 10px;
-    position: absolute;
-    left: 0;
-    border: 2px solid #fff;
-}
+        .message {
+            font-size: 1.2rem;
+            color: #666;
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
 
+        .question {
+            font-size: 2rem;
+            color: #ff6b6b;
+            font-weight: bold;
+            margin: 20px 0;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+            animation: heartBeat 1.5s ease-in-out infinite;
+        }
 
-    .layer1 {
-    background-color: #ff9999;
-    height: 50px;
-    top: 0;
-    animation: layerPulse 2s infinite alternate;
-}
+        @keyframes heartBeat {
+            0%, 100% {
+                transform: scale(1);
+            }
+            14% {
+                transform: scale(1.3);
+            }
+            28% {
+                transform: scale(1);
+            }
+            42% {
+                transform: scale(1.3);
+            }
+            70% {
+                transform: scale(1);
+            }
+        }
 
-.layer2 {
-    background-color: #ffcc99;
-    height: 50px;
-    top: 50px;
-    animation: layerPulse 2s infinite alternate 0.5s;
-}
+        .buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 30px;
+        }
 
-.layer3 {
-    background-color: #ffff99;
-    height: 50px;
-    top: 100px;
-    animation: layerPulse 2s infinite alternate 1s;
-}
+        .btn {
+            padding: 15px 40px;
+            font-size: 1.1rem;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: bold;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
 
-.layer4 {
-    background-color: #99ff99;
-    height: 50px;
-    top: 150px;
-    animation: layerPulse 2s infinite alternate 1.5s;
-}
+        .btn-yes {
+            background: linear-gradient(135deg, #ff6b6b, #ff8e8e);
+            color: white;
+            animation: glow 2s ease-in-out infinite;
+        }
 
-@keyframes layerPulse {
-    0% { transform: scale(1); }
-    100% { transform: scale(1.05); }
-}
+        @keyframes glow {
+            0%, 100% {
+                box-shadow: 0 4px 15px rgba(255, 107, 107, 0.5);
+            }
+            50% {
+                box-shadow: 0 4px 25px rgba(255, 107, 107, 0.8);
+            }
+        }
 
-.candles {
-    position: absolute;
-    top: -20px;
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-}
+        .btn-yes:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(255, 107, 107, 0.7);
+        }
 
-.candle {
-    width: 10px;
-    height: 30px;
-    background-color: #ffcc00;
-    margin: 0 5px;
-    position: relative;
-    border-radius: 5px;
-    animation: candleFlicker 0.1s infinite alternate;
-}
+        .btn-no {
+            background: linear-gradient(135deg, #6c757d, #868e96);
+            color: white;
+        }
 
-.candle::before {
-    content: '';
-    position: absolute;
-    top: -8px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 8px;
-    height: 8px;
-    background-color: #ff4500;
-    border-radius: 50%;
-    box-shadow: 0 0 10px #ff4500;
-}
+        .btn-no:hover {
+            transform: scale(1.1);
+        }
 
-@keyframes candleFlicker {
-    0% { opacity: 1; transform: scale(1); }
-    100% { opacity: 0.8; transform: scale(0.95); }
-}
+        .response {
+            margin-top: 30px;
+            padding: 20px;
+            border-radius: 15px;
+            font-size: 1.3rem;
+            font-weight: bold;
+            display: none;
+            animation: slideIn 0.5s ease-in-out;
+        }
 
-.sprinkles {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-}
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
 
-.sprinkles::before,
-.sprinkles::after {
-    content: '';
-    position: absolute;
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    background-color: #ff1493;
-    animation: sprinklesFall 2s linear infinite;
-}
+        .response-yes {
+            background: linear-gradient(135deg, #ff6b6b, #ff8e8e);
+            color: white;
+        }
 
-.sprinkles::before {
-    left: 20%;
-    top: -10px;
-    animation-delay: 0.5s;
-}
+        .response-no {
+            background: linear-gradient(135deg, #6c757d, #868e96);
+            color: white;
+        }
 
-.sprinkles::after {
-    right: 20%;
-    top: -10px;
-    background-color: #00bfff;
-}
+        .flowers {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            right: 20px;
+            display: flex;
+            justify-content: space-around;
+            z-index: 0;
+        }
 
-@keyframes sprinklesFall {
-    0% { 
-        transform: translateY(0) rotate(0deg);
-        opacity: 1;
-    }
-    100% { 
-        transform: translateY(300px) rotate(360deg);
-        opacity: 0;
-    }
-}
+        .flower {
+            width: 60px;
+            height: 60px;
+            position: relative;
+            animation: sway 3s ease-in-out infinite;
+        }
 
-.balloons {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    margin-top: 50px;
-}
+        @keyframes sway {
+            0%, 100% {
+                transform: rotate(0deg);
+            }
+            50% {
+                transform: rotate(10deg);
+            }
+        }
 
-.balloon {
-    width: 70px;
-    height: 90px;
-    background-color: transparent;
-    border-radius: 50% 50% 0 0;
-    position: relative;
-    margin: 0 15px;
-    transform-origin: bottom center;
-    animation: balloonFloat 3s ease-in-out infinite;
-}
+        .flower::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: #ff6b6b;
+            border-radius: 50%;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
 
-.balloon:nth-child(1) { background-color: #ff6b6b; animation-delay: -0.5s; }
-.balloon:nth-child(2) { background-color: #4ecdc4; animation-delay: -1s; }
-.balloon:nth-child(3) { background-color: #45b7d1; animation-delay: -1.5s; }
-.balloon:nth-child(4) { background-color: #f9d5e5; animation-delay: -2s; }
-.balloon:nth-child(5) { background-color: #eeac99; animation-delay: -2.5s; }
+        .flower::after {
+            content: '';
+            position: absolute;
+            width: 8px;
+            height: 80px;
+            background: #8bc34a;
+            bottom: -60px;
+            left: 26px;
+            border-radius: 4px;
+        }
 
-.balloon::before {
-    content: '';
-    position: absolute;
-    bottom: -40px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 2px;
-    height: 40px;
-    background-color: rgba(0,0,0,0.3);
-}
+        @media (max-width: 600px) {
+            .container {
+                padding: 30px 20px;
+            }
 
-@keyframes balloonFloat {
-    0%, 100% { transform: translateY(0) rotate(-5deg); }
-    50% { transform: translateY(-20px) rotate(5deg); }
-}
+            h1 {
+                font-size: 1.8rem;
+            }
 
-footer {
-    background-color: rgba(255,204,0,0.8);
-    padding: 15px;
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    color: #333;
-    box-shadow: 0 -4px 6px rgba(0,0,0,0.1);
-}
+            .question {
+                font-size: 1.5rem;
+            }
 
-@keyframes slideIn {
-    from { 
-        opacity: 0;
-        transform: translateY(50px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
+            .buttons {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .btn {
+                width: 100%;
+                padding: 12px;
+            }
+
+            .response {
+                font-size: 1.1rem;
+            }
+
+            .flowers {
+                display: none;
+            }
+        }
+
+        .confetti {
+            position: fixed;
+            width: 10px;
+            height: 10px;
+            background-color: #f00;
+            border-radius: 50%;
+            animation: fall linear forwards;
+        }
+
+        @keyframes fall {
+            to {
+                transform: translateY(100vh);
+            }
+        }
+
+        .sparkle {
+            position: absolute;
+            width: 5px;
+            height: 5px;
+            background: white;
+            border-radius: 50%;
+            box-shadow: 0 0 10px 2px white;
+            animation: sparkle 2s infinite;
+        }
+
+        @keyframes sparkle {
+            0%, 100% {
+                opacity: 0;
+                transform: scale(0);
+            }
+            50% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
     </style>
 </head>
 <body>
-    <header>
-        <h1>¡Feliz Cumpleaños, Abuelita!</h1>
-        <div class="header-decoration"></div>
-    </header>
-    <main>
-        <section class="message">
-            <div class="card">
-                <h2>Querida Abuelita</h2>
-                <p>En este día tan especial, queremos desearte un muy feliz cumpleaños. Eres una luz en nuestras vidas y te amamos muchísimo. ¡Que todos tus deseos se hagan realidad!</p>
-            </div>
-        </section>
-        <section class="cake">
-            <div class="cake-container">
-                <div class="cake-layer layer1"></div>
-                <div class="cake-layer layer2"></div>
-                <div class="cake-layer layer3"></div>
-                <div class="cake-layer layer4"></div>
-                <div class="candles">
-                    <div class="candle"></div>
-                    <div class="candle"></div>
-                    <div class="candle"></div>
-                    <div class="candle"></div>
-                </div>
-                <div class="sprinkles"></div>
-            </div>
-        </section>
-        <section class="balloons">
-            <div class="balloon" style="--i:0;"></div>
-            <div class="balloon" style="--i:1;"></div>
-            <div class="balloon" style="--i:2;"></div>
-            <div class="balloon" style="--i:3;"></div>
-            <div class="balloon" style="--i:4;"></div>
-        </section>
-    </main>
-    <footer>
-        <p>Con todo nuestro amor, tu familia.</p>
-    </footer>
+    <div class="hearts" id="hearts"></div>
+    <div class="flowers">
+        <div class="flower"></div>
+        <div class="flower"></div>
+        <div class="flower"></div>
+        <div class="flower"></div>
+        <div class="flower"></div>
+    </div>
+
+    <div class="container">
+        <h1>💌 San Valentín Especial 💌</h1>
+        <p class="message">En este día tan especial, quería preguntarte algo muy importante...</p>
+        
+        <div class="question">¿Quieres ser mi san valentin, mi swampy?</div>
+        
+        <div class="buttons">
+            <button class="btn btn-yes" onclick="yesResponse()">Sí, por supuesto 💕</button>
+            <button class="btn btn-no" onclick="noResponse()">No, lo siento 😢</button>
+        </div>
+        
+        <div class="response" id="response"></div>
+    </div>
+
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
-    const candles = document.querySelectorAll('.candle');
-    
-    candles.forEach(candle => {
-        candle.addEventListener('click', () => {
-            candle.classList.toggle('blown-out');
-        });
-    });
-
-    // Confeti al hacer clic en el pastel
-    const cake = document.querySelector('.cake-container');
-    cake.addEventListener('click', createConfeti);
-
-    function createConfeti() {
-        for(let i = 0; i < 50; i++) {
-            const confeti = document.createElement('div');
-            confeti.classList.add('confeti');
-            confeti.style.left = Math.random() * window.innerWidth + 'px';
-            confeti.style.animationDelay = Math.random() * 2 + 's';
-            document.body.appendChild(confeti);
-
-            setTimeout(() => {
-                confeti.remove();
-            }, 3000);
+        // Crear corazones flotantes
+        function createHearts() {
+            const heartsContainer = document.getElementById('hearts');
+            for (let i = 0; i < 20; i++) {
+                const heart = document.createElement('div');
+                heart.className = 'heart';
+                heart.style.left = Math.random() * 100 + '%';
+                heart.style.top = Math.random() * 100 + '%';
+                heart.style.animationDelay = Math.random() * 3 + 's';
+                heart.style.transform = `rotate(${Math.random() * 360}deg)`;
+                heart.style.opacity = '0';
+                heartsContainer.appendChild(heart);
+            }
         }
-    }
-});
+
+        // Crear chispas
+        function createSparkles() {
+            const container = document.querySelector('.container');
+            for (let i = 0; i < 30; i++) {
+                const sparkle = document.createElement('div');
+                sparkle.className = 'sparkle';
+                sparkle.style.left = Math.random() * 100 + '%';
+                sparkle.style.top = Math.random() * 100 + '%';
+                sparkle.style.animationDelay = Math.random() * 2 + 's';
+                container.appendChild(sparkle);
+            }
+        }
+
+        // Respuesta afirmativa
+        function yesResponse() {
+            const response = document.getElementById('response');
+            response.textContent = '¡Sabía que dirías que sí! 💖 Eres mi swampy perfecto/a ❤️';
+            response.className = 'response response-yes';
+            response.style.display = 'block';
+            
+            createConfetti();
+            celebrate();
+        }
+
+        // Respuesta negativa
+        function noResponse() {
+            const response = document.getElementById('response');
+            response.textContent = '😔 Bueno... quizás otro día... pero siempre serás especial para mí 🌹';
+            response.className = 'response response-no';
+            response.style.display = 'block';
+        }
+
+        // Crear confeti
+        function createConfetti() {
+            const colors = ['#ff6b6b', '#ff8e8e', '#ffb1b1', '#ff4757', '#ff6b81'];
+            for (let i = 0; i < 100; i++) {
+                const confetti = document.createElement('div');
+                confetti.className = 'confetti';
+                confetti.style.left = Math.random() * 100 + '%';
+                confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                confetti.style.animationDuration = (Math.random() * 3 + 2) + 's';
+                document.body.appendChild(confetti);
+                
+                // Eliminar confeti después de la animación
+                setTimeout(() => {
+                    confetti.remove();
+                }, 5000);
+            }
+        }
+
+        // Celebración con más efectos
+        function celebrate() {
+            // Hacer que los botones desaparezcan
+            document.querySelector('.buttons').style.opacity = '0.5';
+            
+            // Añadir más corazones
+            for (let i = 0; i < 10; i++) {
+                setTimeout(() => {
+                    const heart = document.createElement('div');
+                    heart.className = 'heart';
+                    heart.style.left = Math.random() * 100 + '%';
+                    heart.style.top = '0%';
+                    heart.style.opacity = '1';
+                    heart.style.animation = 'float 2s ease-in-out forwards';
+                    document.getElementById('hearts').appendChild(heart);
+                    
+                    setTimeout(() => heart.remove(), 2000);
+                }, i * 200);
+            }
+        }
+
+        // Inicializar efectos al cargar
+        window.onload = function() {
+            createHearts();
+            createSparkles();
+            
+            // Hacer que los corazones aparezcan gradualmente
+            setTimeout(() => {
+                const hearts = document.querySelectorAll('.heart');
+                hearts.forEach((heart, index) => {
+                    setTimeout(() => {
+                        heart.style.opacity = '0.7';
+                    }, index * 100);
+                });
+            }, 500);
+        };
     </script>
 </body>
 </html>
